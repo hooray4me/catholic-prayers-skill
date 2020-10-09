@@ -17,7 +17,7 @@ class CatholicPrayers(MycroftSkill):
         ipAddress = self.settings["yamaha_ip"]
         r = apiResponse(ipAddress,"main/getStatus")
         t = str(r.json().get("power"))
-        print t
+        print(t)
         #self.speak_dialog('prayers.catholic')
         self.speak_dialog('prayers.catholic', {"status": t})
 
