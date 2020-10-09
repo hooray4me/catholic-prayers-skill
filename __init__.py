@@ -26,6 +26,7 @@ class CatholicPrayers(MycroftSkill):
         apiResponse(ipAddress,"main/setVolume?volume=125")
         if str(r.json().get("input")) != "aux":
             apiResponse(ipAddress,"main/setInput?input=aux")
+            time.sleep(1)
         #self.log.info(t)
         #self.speak_dialog('prayers.catholic')
         self.speak_dialog('prayers.catholic', {"status": t})
