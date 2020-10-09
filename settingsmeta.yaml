@@ -14,6 +14,11 @@ skillMetadata:
           label: Yamaha IP Address
           value: ""
           placeholder: 192.168.1.100
+        - name: api_string
+          type: text
+          label: API String
+          value: "/YamahaExtendedControl/v1/"
+          placeholder: /YamahaExtendedControl/v1/
     - name: Login << Name of another section
       fields:
         - type: label
