@@ -14,12 +14,12 @@ class CatholicPrayers(MycroftSkill):
 
     @intent_file_handler('prayers.catholic.intent')
     def handle_prayers_catholic(self, message):
-		ipAddress = self.settings["yamaha_ip"]
-		r = apiResponse(ipAddress,"main/getStatus")
-		t = str(r.json().get("power"))
-		print t
+        ipAddress = self.settings["yamaha_ip"]
+        r = apiResponse(ipAddress,"main/getStatus")
+        t = str(r.json().get("power"))
+        print t
         #self.speak_dialog('prayers.catholic')
-		self.speak_dialog('prayers.catholic', {"status": t})
+        self.speak_dialog('prayers.catholic', {"status": t})
 
 
 def create_skill():
