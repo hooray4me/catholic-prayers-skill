@@ -17,8 +17,8 @@ skillMetadata:
         - name: api_string
           type: text
           label: API String
-          value: "/YamahaExtendedControl/v1/"
-          placeholder: /YamahaExtendedControl/v1/
+          value: ""
+          placeholder: api string
     - name: Login << Name of another section
       fields:
         - type: label
