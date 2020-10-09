@@ -1,13 +1,19 @@
 
 skillMetadata:
   sections:
-    - name: Options << Name of section
+    - name: Mycroft Mouth Settings
       fields:
-        - name: internal_python_variable_name
+        - type: label
+          label: Settings specific to using a Yamaha reciever with MusicCast and the Mycroft 3.5mm audio jack connected to the AUX port.
+        - name: use_yamaha
+          type: checkbox
+          label: Use Yamaha
+          value: "false"
+        - name: yamaha_ip
           type: text
-          label: Setting Friendly Display Name
+          label: Yamaha IP Address
           value: ""
-          placeholder: demo prompt in the input box
+          placeholder: 192.168.1.100
     - name: Login << Name of another section
       fields:
         - type: label
