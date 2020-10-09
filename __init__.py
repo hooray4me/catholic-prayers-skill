@@ -3,6 +3,7 @@ import requests
 import json
 import time
 from mycroft import MycroftSkill, intent_file_handler
+from mycroft.audio import wait_while_speaking
 
 def apiResponse(ipAddress,cmd):
     uri="http://" + str(ipAddress) + "/YamahaExtendedControl/v1/" + str(cmd)
@@ -28,6 +29,7 @@ class CatholicPrayers(MycroftSkill):
         #self.log.info(t)
         #self.speak_dialog('prayers.catholic')
         self.speak_dialog('prayers.catholic', {"status": t})
+        wait_while_speaking()
         apiResponse(ipAddress,"main/setVolume?volume=" + str(r.json().get("volume")))
         if str(r.json().get("input")) != "aux":
             apiResponse(ipAddress,"main/setInput?input=" + str(r.json().get("input")))
