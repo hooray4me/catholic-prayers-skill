@@ -22,13 +22,17 @@ class CatholicPrayers(MycroftSkill):
         if str(r.json().get("power")) == "standby":
             apiResponse(ipAddress,"main/setPower?power=on")
             time.sleep(5)
-            
         if str(r.json().get("input")) != "aux":
             apiResponse(ipAddress,"main/setInput?input=aux")
         apiResponse(ipAddress,"main/setVolume?volume=125")
-        self.log.info(t)
+        #self.log.info(t)
         #self.speak_dialog('prayers.catholic')
         self.speak_dialog('prayers.catholic', {"status": t})
+        apiResponse(ipAddress,"main/setVolume?volume=" + str(r.json().get("volume")))
+        if str(r.json().get("input")) != "aux":
+            apiResponse(ipAddress,"main/setInput?input=" + str(r.json().get("input")))
+        if str(r.json().get("power")) == "standby":
+            apiResponse(ipAddress,"main/setPower?power=standby")
 
 
 def create_skill():
