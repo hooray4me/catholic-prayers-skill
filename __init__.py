@@ -22,7 +22,7 @@ class CatholicPrayers(MycroftSkill):
         t = str(r.json().get("power"))
         if str(r.json().get("power")) == "standby":
             apiResponse(ipAddress,"main/setPower?power=on")
-            time.sleep(5)
+            time.sleep(3)
         if str(r.json().get("input")) != "aux":
             apiResponse(ipAddress,"main/setInput?input=aux")
         #apiResponse(ipAddress,"main/setVolume?volume=125")
