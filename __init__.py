@@ -1,6 +1,7 @@
 import io
 import requests
 import json
+import time
 from mycroft import MycroftSkill, intent_file_handler
 
 def apiResponse(ipAddress,cmd):
@@ -15,10 +16,17 @@ class CatholicPrayers(MycroftSkill):
     @intent_file_handler('prayers.catholic.intent')
     def handle_prayers_catholic(self, message):
         ipAddress = self.settings["yamaha_ip"]
-        self.log.debug(ipAddress)
+        #self.log.info(ipAddress)
         r = apiResponse(ipAddress,"main/getStatus")
         t = str(r.json().get("power"))
-        self.log.debug(t)
+        if str(r.json().get("power")) == "standby":
+            apiResponse(ipAddress,"main/setPower?power=on")
+            time.sleep(8)
+            
+        if str(r.json().get("input")) != "aux":
+            apiResponse(ipAddress,"main/setInput?input=aux")
+        apiResponse(ipAddress,"main/setVolume?volume=125")
+        self.log.info(t)
         #self.speak_dialog('prayers.catholic')
         self.speak_dialog('prayers.catholic', {"status": t})
 
